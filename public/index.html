@@ -4,26 +4,18 @@
     <meta charset="utf-8">
     <title>Simple Form</title>
     <link rel="stylesheet" href="style/index-style.css">
-    <link rel="stylesheet" href="style/persian-datepicker.min.css"/>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <script src="js/persian-datepicker.min.js"></script>
-    <script src="js/persian-date.min.js"></script>
 </head>
 <body>
-<form class="box" action="/" method="post">
+<form class="box" action="/" method="post" enctype="multipart/form-data">
     <h1>Form</h1>
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="address" placeholder="Address">
     <input type="email" name="email" placeholder="Email">
-    <input type="text" name="date" class="normal-example"/>
     <input type="submit" id="form-submit" name="" value="Submit">
     <div class="list" id="forms"></div>
     <script>
         $(document).ready(function () {
-            $('.normal-example').persianDatepicker({
-                format: "YYYY/MM/DD",
-                responsive: true
-            });
             $('#form-submit').click((e) => {
                 e.preventDefault();
                 $.ajax({
@@ -33,7 +25,6 @@
                         name: $('input[name=name]').val(),
                         address: $('input[name=address]').val(),
                         email: $('input[name=email]').val(),
-                        date: $('input[name=date]').val(),
                     },
                     success: (data) => {
                         console.log('successful submit!');
